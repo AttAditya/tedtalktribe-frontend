@@ -1,14 +1,14 @@
-import logo from './assets/Logo.png';
 import './App.css';
+import { Calendar } from './sections';
 
 function App() {
     return (
         <div className="App">
-            <img src={logo} className="App-logo" alt="logo" />
-            
             <h1>
-                This will be the official website for <em>the TED Talk Tribe</em>.
+                <em>The TED Talk Tribe</em>.
             </h1>
+
+            <Calendar />
         </div>
     );
 }
