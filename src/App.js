@@ -1,5 +1,6 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import './App.css';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { Events, Login, Signup } from './pages';
 
 function App() {
     return (
@@ -17,10 +18,10 @@ function App() {
                             </ul>
                         </div>
                     )} />
-                    <Route path="/events" element={"Events Page"} />
-                    <Route path="/events/:id" element={"Event Detail Page"} />
-                    <Route path="/login" element={"Login Page"} />
-                    <Route path="/signup" element={"Signup Page"} />
+                    <Route path="/events" element={<Events />} />
+                    <Route path="/events/:id" element={"Event Details"} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
                 </Routes>
             </BrowserRouter>
         </div>

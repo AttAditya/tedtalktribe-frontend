@@ -1,1 +1,2 @@
-export { EventCard } from "./cards"
+export { EventCard } from "./cards";
+export { Promo } from "./promo";
