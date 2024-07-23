@@ -1,0 +1,160 @@
+:root {
+    --color-primary: hsl(0, 84%, 45%);
+    --color-secondary: hsl(234, 55%, 7%);
+    
+    --color-link: hsl(217, 71%, 53%);
+    --color-info: hsl(204, 86%, 53%);
+    --color-success: hsl(141, 71%, 48%);
+    --color-warning: hsl(48, 100%, 67%);
+    --color-danger: hsl(348, 100%, 61%);
+
+    --color-white: hsl(0, 0%, 100%);
+    --color-light: hsl(0, 0%, 80%);
+    --color-gray: hsl(0, 0%, 50%);
+    --color-dark: hsl(0, 0%, 20%);
+    --color-black: hsl(0, 0%, 0%);
+}
+
+.color-primary {
+    color: var(--color-primary);
+}
+
+.color-secondary {
+    color: var(--color-secondary);
+}
+
+.color-link {
+    color: var(--color-link);
+}
+
+.color-info {
+    color: var(--color-info);
+}
+
+.color-success {
+    color: var(--color-success);
+}
+
+.color-warning {
+    color: var(--color-warning);
+}
+
+.color-danger {
+    color: var(--color-danger);
+}
+
+.color-white {
+    color: var(--color-white);
+}
+
+.color-light {
+    color: var(--color-light);
+}
+
+.color-gray {
+    color: var(--color-gray);
+}
+
+.color-dark {
+    color: var(--color-dark);
+}
+
+.color-black {
+    color: var(--color-black);
+}
+
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.bg-secondary {
+    background-color: var(--color-secondary);
+}
+
+.bg-link {
+    background-color: var(--color-link);
+}
+
+.bg-info {
+    background-color: var(--color-info);
+}
+
+.bg-success {
+    background-color: var(--color-success);
+}
+
+.bg-warning {
+    background-color: var(--color-warning);
+}
+
+.bg-danger {
+    background-color: var(--color-danger);
+}
+
+.bg-white {
+    background-color: var(--color-white);
+}
+
+.bg-light {
+    background-color: var(--color-light);
+}
+
+.bg-gray {
+    background-color: var(--color-gray);
+}
+
+.bg-dark {
+    background-color: var(--color-dark);
+}
+
+.bg-black {
+    background-color: var(--color-black);
+}
+
+.border-primary {
+    border-color: var(--color-primary);
+}
+
+.border-secondary {
+    border-color: var(--color-secondary);
+}
+
+.border-link {
+    border-color: var(--color-link);
+}
+
+.border-info {
+    border-color: var(--color-info);
+}
+
+.border-success {
+    border-color: var(--color-success);
+}
+
+.border-warning {
+    border-color: var(--color-warning);
+}
+
+.border-danger {
+    border-color: var(--color-danger);
+}
+
+.border-white {
+    border-color: var(--color-white);
+}
+
+.border-light {
+    border-color: var(--color-light);
+}
+
+.border-gray {
+    border-color: var(--color-gray);
+}
+
+.border-dark {
+    border-color: var(--color-dark);
+}
+
+.border-black {
+    border-color: var(--color-black);
+}

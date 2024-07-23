@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en" data-theme="light">
+
+<head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -24,9 +21,32 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  </head>
-  <body>
+
+    <title>The World Times</title>
+    <meta name="description"
+        content="The World Times Bring You All Around the World! News, Entertainment, Sports, Science, Tech, Health and more...">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://theworldtimes.in">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The World Times">
+    <meta property="og:description"
+        content="The World Times Bring You All Around the World! News, Entertainment, Sports, Science, Tech, Health and more...">
+    <meta property="og:image" content="%PUBLIC_URL%/banner.png">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="theworldtimes.in">
+    <meta property="twitter:url" content="https://theworldtimes.in">
+    <meta name="twitter:title" content="The World Times">
+    <meta name="twitter:description"
+        content="The World Times Bring You All Around the World! News, Entertainment, Sports, Science, Tech, Health and more...">
+    <meta name="twitter:image" content="%PUBLIC_URL%/banner.png">
+
+    <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+</head>
+
+<body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -39,5 +59,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
+
 </html>

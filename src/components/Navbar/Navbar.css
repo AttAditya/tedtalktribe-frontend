@@ -1,0 +1,15 @@
+.navbar {
+    z-index: 1000;
+}
+
+.navbar > * {
+    height: 100%;
+}
+
+.navbar-item {
+    height: 100%;
+}
+
+.navbar img {
+    height: 100%;
+}

@@ -1,0 +1,57 @@
+:has(.featured):not(:has(* > .featured)) {
+    width: 100%;
+}
+
+.featured {
+    display: grid;
+
+    grid-template-areas: 
+        "fcard1 fcard1 fcard2 fcard3"
+        "fcard1 fcard1 fcard4 fcard5"
+        "fcard6 fcard7 fcard8 fcard9";
+    
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 33%);
+
+    gap: 1rem;
+
+    height: 100%;
+    width: 100%;
+}
+
+.featured > *:nth-child(1) {
+    grid-area: fcard1;
+}
+
+.featured > *:nth-child(2) {
+    grid-area: fcard2;
+}
+
+.featured > *:nth-child(3) {
+    grid-area: fcard3;
+}
+
+.featured > *:nth-child(4) {
+    grid-area: fcard4;
+}
+
+.featured > *:nth-child(5) {
+    grid-area: fcard5;
+}
+
+.featured > *:nth-child(6) {
+    grid-area: fcard6;
+}
+
+.featured > *:nth-child(7) {
+    grid-area: fcard7;
+}
+
+.featured > *:nth-child(8) {
+    grid-area: fcard8;
+}
+
+.featured > *:nth-child(9) {
+    grid-area: fcard9;
+}
+
