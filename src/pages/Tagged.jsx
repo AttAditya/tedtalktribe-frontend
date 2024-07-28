@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { TaggedArticles } from "../sections/Tagged/TaggedArticles";
+import { TaggedSection } from "../sections";
 
 export function Tagged() {
     let params = useParams();
@@ -15,7 +15,7 @@ export function Tagged() {
             </h1>
 
             <section className="articles-list-section w-full mt-4">
-                <TaggedArticles sectionId={tag} />
+                <TaggedSection sectionId={tag} />
             </section>
         </div>
     );

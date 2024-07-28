@@ -15,7 +15,7 @@ export function ArticleListCard({ id, title, image, author, publishDate, tags })
             </div>
 
             <div className="article-list-card-content">
-                <h3>{title}</h3>
+                <h3 className="line-clamp-1">{title}</h3>
 
                 <div className="article-list-card-meta">
                     <span>{publishDate}</span>

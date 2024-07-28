@@ -16,7 +16,7 @@ export function TaggedArticles({ sectionId }) {
     }, [sectionId]);
 
     return (
-        <div className="articles-list mt-2">
+        <div className="tagged-articles-list mt-2">
             {
                 sectionNews.map((news) => (
                     <ArticleListCard
