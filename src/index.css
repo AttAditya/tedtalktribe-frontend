@@ -47,4 +47,8 @@
     .no-tailwind * {
         all: unset;
     }
+
+    img {
+        min-width: 100%;
+    }
 }
