@@ -1,18 +1,42 @@
+import { useEffect, useState } from "react";
+import {
+    BsChatDots,
+    BsEnvelope,
+    BsFacebook,
+    BsInstagram,
+    BsLinkedin,
+    BsPinterest,
+    BsReddit,
+    BsTelegram,
+    BsTwitterX,
+    BsWhatsapp
+} from "react-icons/bs";
+import { GrTumblr } from "react-icons/gr";
 import { useParams } from "react-router-dom";
+import api from "../api";
 
 export function Article() {
     let params = useParams();
     let id = params.id;
 
-    let data = {
+    let [data, setData] = useState({
         id: id,
-        name: "Here is a demo article",
-        content: "This is the content of article 1.",
-        image: "https://picsum.photos/800/400",
-        author: "John Doe",
-        published: "2021-09-01",
-        tags: ["tag1", "tag2", "tag3"]
-    };
+        name: "Loading...",
+        content: "Loading...",
+        image: "",
+        author: "Loading...",
+        published: "Loading...",
+        tags: []
+    })
+
+    useEffect(() => {
+        let fetchArticle = async () => {
+            let article = await api.articles.getArticle(id);
+            setData(article);
+        }
+
+        fetchArticle();
+    }, [id]);
 
     return (
         <div className="article p-6 w-full">
@@ -41,58 +65,58 @@ export function Article() {
 
                         <ul className="flex gap-2 py-2 flex-wrap">
                             <li>
-                                <a className="bg-primary color-white px-2 py-2 rounded-lg font-semibold cursor-pointer" href={`https://wa.me/?text=${window.location.href}`}>
-                                    WhatsApp
+                                <a className="bg-primary color-white rounded-lg font-semibold cursor-pointer flex justify-center items-center p-2 text-2xl" href={`https://wa.me/?text=${window.location.href}`}>
+                                    <BsWhatsapp />
                                 </a>
                             </li>
                             <li>
-                                <a className="bg-primary color-white px-2 py-2 rounded-lg font-semibold cursor-pointer" href={`https://t.me/share/url?url=${window.location.href}`}>
-                                    Telegram
+                                <a className="bg-primary color-white rounded-lg font-semibold cursor-pointer flex justify-center items-center p-2 text-2xl" href={`https://t.me/share/url?url=${window.location.href}`}>
+                                    <BsTelegram />
                                 </a>
                             </li>
                             <li>
-                                <a className="bg-primary color-white px-2 py-2 rounded-lg font-semibold cursor-pointer" href={`mailto:?body=${window.location.href}`}>
-                                    Email
+                                <a className="bg-primary color-white rounded-lg font-semibold cursor-pointer flex justify-center items-center p-2 text-2xl" href={`mailto:?body=${window.location.href}`}>
+                                    <BsEnvelope />
                                 </a>
                             </li>
                             <li>
-                                <a className="bg-primary color-white px-2 py-2 rounded-lg font-semibold cursor-pointer" href={`sms:?body=${window.location.href}`}>
-                                    SMS
+                                <a className="bg-primary color-white rounded-lg font-semibold cursor-pointer flex justify-center items-center p-2 text-2xl" href={`sms:?body=${window.location.href}`}>
+                                    <BsChatDots />
                                 </a>
                             </li>
                             <li>
-                                <a className="bg-primary color-white px-2 py-2 rounded-lg font-semibold cursor-pointer" href={`https://reddit.com/submit?url=${window.location.href}`}>
-                                    Reddit
+                                <a className="bg-primary color-white rounded-lg font-semibold cursor-pointer flex justify-center items-center p-2 text-2xl" href={`https://reddit.com/submit?url=${window.location.href}`}>
+                                    <BsReddit />
                                 </a>
                             </li>
                             <li>
-                                <a className="bg-primary color-white px-2 py-2 rounded-lg font-semibold cursor-pointer" href={`https://pinterest.com/pin/create/button/?url=${window.location.href}`}>
-                                    Pinterest
+                                <a className="bg-primary color-white rounded-lg font-semibold cursor-pointer flex justify-center items-center p-2 text-2xl" href={`https://pinterest.com/pin/create/button/?url=${window.location.href}`}>
+                                    <BsPinterest />
                                 </a>
                             </li>
                             <li>
-                                <a className="bg-primary color-white px-2 py-2 rounded-lg font-semibold cursor-pointer" href={`https://www.tumblr.com/widgets/share/tool?canonicalUrl=${window.location.href}`}>
-                                    Tumblr
+                                <a className="bg-primary color-white rounded-lg font-semibold cursor-pointer flex justify-center items-center p-2 text-2xl" href={`https://www.tumblr.com/widgets/share/tool?canonicalUrl=${window.location.href}`}>
+                                    <GrTumblr />
                                 </a>
                             </li>
                             <li>
-                                <a className="bg-primary color-white px-2 py-2 rounded-lg font-semibold cursor-pointer" href={`https://www.instagram.com/?url=${window.location.href}`}>
-                                    Instagram
+                                <a className="bg-primary color-white rounded-lg font-semibold cursor-pointer flex justify-center items-center p-2 text-2xl" href={`https://www.instagram.com/?url=${window.location.href}`}>
+                                    <BsInstagram />
                                 </a>
                             </li>
                             <li>
-                                <a className="bg-primary color-white px-2 py-2 rounded-lg font-semibold cursor-pointer" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
-                                    Facebook
+                                <a className="bg-primary color-white rounded-lg font-semibold cursor-pointer flex justify-center items-center p-2 text-2xl" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
+                                    <BsFacebook />
                                 </a>
                             </li>
                             <li>
-                                <a className="bg-primary color-white px-2 py-2 rounded-lg font-semibold cursor-pointer" href={`https://twitter.com/intent/tweet?url=${window.location.href}`}>
-                                    Twitter
+                                <a className="bg-primary color-white rounded-lg font-semibold cursor-pointer flex justify-center items-center p-2 text-2xl" href={`https://twitter.com/intent/tweet?url=${window.location.href}`}>
+                                    <BsTwitterX />
                                 </a>
                             </li>
                             <li>
-                                <a className="bg-primary color-white px-2 py-2 rounded-lg font-semibold cursor-pointer" href={`https://www.linkedin.com/shareArticle?url=${window.location.href}`}>
-                                    LinkedIn
+                                <a className="bg-primary color-white rounded-lg font-semibold cursor-pointer flex justify-center items-center p-2 text-2xl" href={`https://www.linkedin.com/shareArticle?url=${window.location.href}`}>
+                                    <BsLinkedin />
                                 </a>
                             </li>
                         </ul>
@@ -123,7 +147,7 @@ export function Article() {
                             {
                                 data.tags.map((tag, index) => (
                                     <li key={index}>
-                                        <a className="bg-primary color-white px-2 py-2 rounded-lg font-semibold cursor-pointer" href={`/tags/${tag}`}>
+                                        <a className="bg-primary color-white rounded-lg font-semibold cursor-pointer flex justify-center items-center px-2 py-1" href={`/tags/${tag}`}>
                                             {tag}
                                         </a>
                                     </li>

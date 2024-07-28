@@ -1,57 +1,19 @@
 import "./Articles.css";
 import { ArticleListCard } from "../../components";
+import { useEffect, useState } from "react";
+import api from "../../api";
 
 export function Articles({ sectionId }) {
-    let sectionNews = [
-        {
-            id: "12891r93rh9f0",
-            title: "Climate change is real",
-            image: "https://picsum.photos/1080/1920",
-            author: "John Doe",
-            publishDate: "2021-09-01",
-            tags: ["Climate Change", "Global Warming"]
-        },
-        {
-            id: "12891r93rh9f1",
-            title: "The rise of AI",
-            image: "https://picsum.photos/1080/721",
-            author: "Jane Doe",
-            publishDate: "2021-09-02",
-            tags: ["AI", "Technology"]
-        },
-        {
-            id: "12891r93rh9f2",
-            title: "The future of work",
-            image: "https://picsum.photos/1081/720",
-            author: "John Doe",
-            publishDate: "2021-09-03",
-            tags: ["Work", "Future"]
-        },
-        {
-            id: "12891r93rh9f3",
-            title: "The future of work",
-            image: "https://picsum.photos/1081/721",
-            author: "John Doe",
-            publishDate: "2021-09-03",
-            tags: ["Work", "Future"]
-        },
-        {
-            id: "12891r93rh9f4",
-            title: "The future of work",
-            image: "https://picsum.photos/1080/719",
-            author: "John Doe",
-            publishDate: "2021-09-03",
-            tags: ["Work", "Future"]
-        },
-        {
-            id: "12891r93rh9f5",
-            title: "The future of work",
-            image: "https://picsum.photos/1080/722",
-            author: "John Doe",
-            publishDate: "2021-09-03",
-            tags: ["Work", "Future"]
+    let [sectionNews, setSectionNews] = useState([]);
+
+    useEffect(() => {
+        let fetchSectionNews = async () => {
+            let news = await api.articles.taggedArticles(sectionId);
+            setSectionNews(news);
         }
-    ];
+
+        fetchSectionNews();
+    }, [sectionId]);
 
     return (
         <section className="articles-list-section">
