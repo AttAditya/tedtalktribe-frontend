@@ -3,6 +3,7 @@ import "./Navbar.css";
 import { useRef } from "react";
 import logo from "../../assets/logo-transparent.png";
 import { BsFacebook, BsInstagram, BsMailbox, BsTwitterX } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 function Navbar() {
     let navbarMenu = useRef(null);
@@ -90,9 +91,9 @@ function Navbar() {
                 <div className="navbar-start text-xl flex align-middle justify-center color-white font-semibold gap-5">
                     {
                         navCategories.map((category, index) => (
-                            <a key={category.name} className="navbar-item flex justify-center items-center" href={category.url}>
+                            <Link key={category.name} className="navbar-item flex justify-center items-center" to={category.url}>
                                 {category.name}
-                            </a>
+                            </Link>
                         ))
                     }
                 </div>
