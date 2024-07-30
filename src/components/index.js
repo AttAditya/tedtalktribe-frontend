@@ -1,3 +1,3 @@
-export { Navbar } from './navbar';
+export { Navbar } from './Navbar';
 export { FeaturedCard, ArticleListCard } from './cards';
-export { Footer } from './footer';
+export { Footer } from './Footer';
