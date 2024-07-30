@@ -45,14 +45,14 @@ export function Article() {
             </h1>
             
             <div className="article-main flex p-6 gap-5">
-                <div className="article-content flex-1 bg-white p-6 rounded-lg shadow-lg">
-                    <div className="article-thumbnail flex justify-center">
-                        <img src={data.image} alt={data.name} />
+                <div className="article-content flex-1 bg-white p-6 rounded-3xl shadow-lg">
+                    <div className="article-thumbnail flex justify-center px-6 pt-6">
+                        <img src={data.image} alt={data.name} className="rounded-lg" />
                     </div>
 
-                    <hr className="mt-6 mx-6 border-t-4" />
+                    <hr className="mt-12 mx-6 border-t-4" />
 
-                    <div className="article-text mt-4 text-xl px-6 pb-6">
+                    <div className="article-text mt-10 text-xl px-6 pb-6">
                         {data.content}
                     </div>
                 </div>
