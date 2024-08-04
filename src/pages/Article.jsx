@@ -50,6 +50,10 @@ export function Article({
     }, [id, overwrite]);
 
     useEffect(() => {
+        if (!overwrite) {
+            return;
+        }
+        
         setData({
             id: articleId,
             name: articleName,
