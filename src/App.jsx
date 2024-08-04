@@ -2,12 +2,15 @@ import "./variables.css";
 import "tailwindcss/tailwind.css";
 import "./App.css";
 
-import { Navbar, Footer } from "./components";
+import { Navbar, Footer, Calendar } from "./components";
 import {
     HomePage,
+    LoginPage,
+    SignupPage,
+    Dashboard,
     ArticlePage,
     TaggedPage,
-    PolicyPage,
+    ArticleEditorPage,
     NotFoundPage
 } from "./pages";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -15,22 +18,25 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
     return (
         <BrowserRouter>
-            <div className="app mt-20 flex flex-col items-center pb-10">
+            <div className="app mt-20 flex flex-col items-center">
                 <Navbar />
 
                 <Routes>
                     <Route path="/" element={<HomePage />} />
 
-                    <Route path="/category/:tag" element={<TaggedPage />} />
-                    <Route path="/tagged/:tag" element={<TaggedPage />} />
-                    <Route path="/tags/:tag" element={<TaggedPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/signup" element={<SignupPage />} />
 
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    
+                    <Route path="/events" element={<Calendar />} />
+                    
+                    <Route path="/discover/articles" element={<TaggedPage />} />
                     <Route path="/article/:id" element={<ArticlePage />} />
 
-                    <Route path="/policy" element={<PolicyPage />} />
-                    <Route path="/terms" element={<PolicyPage />} />
-                    <Route path="/tac" element={<PolicyPage />} />
+                    <Route path="/editor/article" element={<ArticleEditorPage />} />
 
+                    <Route path="/404" element={<NotFoundPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
 

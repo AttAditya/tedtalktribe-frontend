@@ -1,6 +1,7 @@
-import { BsEnvelope, BsFacebook, BsInstagram, BsTwitterX } from "react-icons/bs";
+import { BsEnvelope, BsInstagram, BsLinkedin } from "react-icons/bs";
 import logo from "./../../assets/logo-transparent.png";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 export function Footer() {
     return (
@@ -8,22 +9,12 @@ export function Footer() {
             <div className="grid grid-cols-5 gap-4 p-10">
                 <div className="footer-column flex flex-col gap-2">
                     <a href="/" className="logo bg-white p-4 rounded-xl w-1/2">
-                        <img src={logo} alt="The World Times" />
+                        <img src={logo} alt="TED Talk Tribe" />
                     </a>
 
-                    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-                        <div className="cclicense w-1/2">
-                            <img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" className="border-2 border-black rounded-lg" />
-                        </div>
-                    </a>
-                    
-                    <span>
-                        <em><a href="/">theworldtimes.in</a> &copy; 2023</em>
-                    </span>
-
-                    <span>
-                        All Rights Reserved, licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" className="italic whitespace-nowrap">CC 4.0 License</a>
-                    </span>
+                    <p className="text-lg">
+                        SST - TED Talk Tribe
+                    </p>
                 </div>
 
                 <div></div>
@@ -35,28 +26,21 @@ export function Footer() {
                     </h3>
 
                     <div className="py-4 flex flex-col gap-2">
-                        <a href="https://www.instagram.com/theworldtimes.in/" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                        <a href="https://instagram.com/tedtalktribe" target="_blank" rel="noopener noreferrer" className="flex items-center">
                             <BsInstagram className="text-2xl" />
                             <span className="ml-2 font-semibold text-lg">
                                 Instagram
                             </span>
                         </a>
 
-                        <a href="https://twitter.com/worldtimes_in" target="_blank" rel="noopener noreferrer" className="flex items-center">
-                            <BsTwitterX className="text-2xl" />
+                        <a href="https://www.linkedin.com/company/sst-ted-talk-tribe/" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                            <BsLinkedin className="text-2xl" />
                             <span className="ml-2 font-semibold text-lg">
-                                Twitter
+                                LinkedIn
                             </span>
                         </a>
 
-                        <a href="https://www.facebook.com/people/The-World-Times/100093097914112/" target="_blank" rel="noopener noreferrer" className="flex items-center">
-                            <BsFacebook className="text-2xl" />
-                            <span className="ml-2 font-semibold text-lg">
-                                Facebook
-                            </span>
-                        </a>
-
-                        <a href="mailto:info@theworldtimes.in" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                        <a href="mailto:tedtalktribe.club@sst.scaler.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
                             <BsEnvelope className="text-2xl" />
                             <span className="ml-2 font-semibold text-lg">
                                 E-Mail
@@ -67,25 +51,33 @@ export function Footer() {
 
                 <div className="footer-column">
                     <h3 className="text-2xl font-bold uppercase">
-                        Other Pages
+                        Quick Links
                     </h3>
 
                     <div className="py-4 flex flex-col">
-                        <a href="https://staff.theworldtimes.in/" className="text-lg">
-                            Staff Page
-                        </a>
+                        <Link to="/" className="text-lg">
+                            Home
+                        </Link>
 
-                        <a href="/careers" className="text-lg">
-                            Careers Page
-                        </a>
+                        <Link to="/events" className="text-lg">
+                            Events
+                        </Link>
 
-                        <a href="/policy/ads" className="text-lg">
-                            Advertise with us
-                        </a>
+                        <Link to="/discover/articles" className="text-lg">
+                            Articles
+                        </Link>
 
-                        <a href="/policy" className="text-lg">
-                            TAC &amp; Privacy Policy
-                        </a>
+                        <Link to="/newsletters" className="text-lg">
+                            Newsletters
+                        </Link>
+
+                        <Link to="/tribe" className="text-lg">
+                            Tribe
+                        </Link>
+
+                        <Link to="/dashboard" className="text-lg">
+                            Dashboard
+                        </Link>
                     </div>
                 </div>
             </div>

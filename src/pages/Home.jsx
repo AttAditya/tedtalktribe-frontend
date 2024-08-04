@@ -1,22 +1,10 @@
 import { FeaturedSection, ArticleSection } from "../sections";
 
 export function Home() {
-    let topics = [
-        "foods",
-        "sports",
-        "politics",
-        "technology",
-        "entertainment"
-    ];
-
     return (
-        <div className="container p-4 flex flex-col gap-32">
+        <div className="flex flex-col gap-32 w-full pb-20">
             <FeaturedSection />
-            {
-                topics.map((topic) => (
-                    <ArticleSection key={topic} sectionId={topic} />
-                ))
-            }
+            <ArticleSection sectionId="articles" />
         </div>
     );
 }

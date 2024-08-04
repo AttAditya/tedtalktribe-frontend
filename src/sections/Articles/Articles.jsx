@@ -16,8 +16,8 @@ export function Articles({ sectionId }) {
     }, [sectionId]);
 
     return (
-        <section className="articles-list-section">
-            <h1 className="text-5xl font-bold py-3 capitalize">
+        <section className="articles-list-section px-20">
+            <h1 className="text-5xl font-bold py-3 p-4 capitalize">
                 {
                     sectionId.replace(/-/g, " ")
                 } Section

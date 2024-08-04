@@ -2,7 +2,7 @@ import "./Navbar.css";
 
 import { useRef } from "react";
 import logo from "../../assets/logo-transparent.png";
-import { BsFacebook, BsInstagram, BsMailbox, BsTwitterX } from "react-icons/bs";
+import { BsInstagram, BsLinkedin, BsMailbox } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -15,32 +15,20 @@ function Navbar() {
             url: "/"
         },
         {
-            name: "Highlights",
-            url: "/category/highlights"
+            name: "Events",
+            url: "/events"
         },
         {
-            name: "State",
-            url: "/category/state"
+            name: "Articles",
+            url: "/discover/articles"
         },
         {
-            name: "Facts",
-            url: "/category/facts"
+            name: "Newsletters",
+            url: "/newsletters"
         },
         {
-            name: "Lifestyle",
-            url: "/category/lifestyle"
-        },
-        {
-            name: "Business",
-            url: "/category/business"
-        },
-        {
-            name: "Politics",
-            url: "/category/politics"
-        },
-        {
-            name: "Entertainment",
-            url: "/category/entertainment"
+            name: "Tribe",
+            url: "/tribe"
         }
     ]
 
@@ -48,22 +36,17 @@ function Navbar() {
         {
             tooltip: "Instagram",
             content: (<BsInstagram />),
-            url: "https://www.instagram.com/theworldtimes.in/"
+            url: "https://instagram.com/tedtalktribe"
         },
         {
-            tooltip: "Twitter",
-            content: (<BsTwitterX />),
-            url: "https://twitter.com/worldtimes_in"
-        },
-        {
-            tooltip: "Facebook",
-            content: (<BsFacebook />),
-            url: "https://www.facebook.com/people/The-World-Times/100093097914112/"
+            tooltip: "LinkedIn",
+            content: (<BsLinkedin />),
+            url: "https://www.linkedin.com/company/sst-ted-talk-tribe/"
         },
         {
             tooltip: "Mail",
             content: (<BsMailbox />),
-            url: "mailto:info@theworldtimes.in"
+            url: "mailto:tedtalktribe.club@sst.scaler.com"
         }
     ]
 

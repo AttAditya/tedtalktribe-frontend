@@ -1,11 +1,14 @@
 import { APICaller } from "./caller";
-import { articleCalls } from "./routing/articles";
+import { articleCalls, authCalls } from "./routing";
 
 let caller = new APICaller("http://localhost:8081");
+
 let articles = articleCalls(caller);
+let auth = authCalls(caller);
 
 let api = {
-    articles: articles
+    articles: articles,
+    auth: auth
 }
 
 export default api;

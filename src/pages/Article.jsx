@@ -15,19 +15,28 @@ import { GrTumblr } from "react-icons/gr";
 import { useParams } from "react-router-dom";
 import api from "../api";
 
-export function Article() {
+export function Article({
+    overwrite=false,
+    articleId=0,
+    articleName="Loading...",
+    articleContent="Loading...",
+    articleImage="",
+    articleAuthor="Loading...",
+    articlePublished="Loading...",
+    articleTags=[]
+}) {
     let params = useParams();
     let id = params.id;
 
     let [data, setData] = useState({
-        id: id,
-        name: "Loading...",
-        content: "Loading...",
-        image: "",
-        author: "Loading...",
-        published: "Loading...",
-        tags: []
-    })
+        id: articleId,
+        name: articleName,
+        content: articleContent,
+        image: articleImage,
+        author: articleAuthor,
+        published: articlePublished,
+        tags: articleTags
+    });
 
     useEffect(() => {
         let fetchArticle = async () => {
@@ -35,8 +44,30 @@ export function Article() {
             setData(article);
         }
 
-        fetchArticle();
-    }, [id]);
+        if (!overwrite) {
+            fetchArticle();
+        }
+    }, [id, overwrite]);
+
+    useEffect(() => {
+        setData({
+            id: articleId,
+            name: articleName,
+            content: articleContent,
+            image: articleImage,
+            author: articleAuthor,
+            published: articlePublished,
+            tags: articleTags
+        });
+    }, [
+        articleId,
+        articleName,
+        articleContent,
+        articleImage,
+        articleAuthor,
+        articlePublished,
+        articleTags
+    ]);
 
     return (
         <div className="article p-6 w-full">

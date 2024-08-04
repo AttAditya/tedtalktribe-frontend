@@ -1,2 +1,2 @@
-# The World Times
+# TED TALK TRIBE
 
