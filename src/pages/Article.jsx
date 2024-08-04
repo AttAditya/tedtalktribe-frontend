@@ -53,7 +53,7 @@ export function Article({
         if (!overwrite) {
             return;
         }
-        
+
         setData({
             id: articleId,
             name: articleName,
@@ -64,6 +64,7 @@ export function Article({
             tags: articleTags
         });
     }, [
+        overwrite,
         articleId,
         articleName,
         articleContent,
