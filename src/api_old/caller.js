@@ -4,12 +4,13 @@ export class APICaller {
     }
 
     async get(endpoint) {
+        console.log(`${this.baseURL}/${endpoint}`);
         const response = await fetch(`${this.baseURL}${endpoint}`);
         return await response.json();
     }
 
     async post(endpoint, data) {
-        const response = await fetch(`${this.baseURL}${endpoint}`, {
+        const response = await fetch(`${this.baseURL}/${endpoint}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

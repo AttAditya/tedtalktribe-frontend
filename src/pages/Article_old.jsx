@@ -14,21 +14,29 @@ import {
 import { GrTumblr } from "react-icons/gr";
 import { useParams } from "react-router-dom";
 import api from "../api";
-import parse from "html-react-parser";
 
-export function Article() {
+export function Article({
+    overwrite=false,
+    articleId=0,
+    articleName="Loading...",
+    articleContent="Loading...",
+    articleImage="",
+    articleAuthor="Loading...",
+    articlePublished="Loading...",
+    articleTags=[]
+}) {
     let params = useParams();
     let id = params.id;
 
     let [data, setData] = useState({
-        id: id,
-        name: "Loading...",
-        content: "Loading...",
-        image: "",
-        author: "Loading...",
-        publishedDate: "Loading...",
-        tags: []
-    })
+        id: articleId,
+        name: articleName,
+        content: articleContent,
+        image: articleImage,
+        author: articleAuthor,
+        published: articlePublished,
+        tags: articleTags
+    });
 
     useEffect(() => {
         let fetchArticle = async () => {
@@ -36,27 +44,52 @@ export function Article() {
             setData(article);
         }
 
-        fetchArticle();
-    }, [id]);
+        if (!overwrite) {
+            fetchArticle();
+        }
+    }, [id, overwrite]);
+
+    useEffect(() => {
+        if (!overwrite) {
+            return;
+        }
+
+        setData({
+            id: articleId,
+            name: articleName,
+            content: articleContent,
+            image: articleImage,
+            author: articleAuthor,
+            published: articlePublished,
+            tags: articleTags
+        });
+    }, [
+        overwrite,
+        articleId,
+        articleName,
+        articleContent,
+        articleImage,
+        articleAuthor,
+        articlePublished,
+        articleTags
+    ]);
 
     return (
         <div className="article p-6 w-full">
-            <h1 className="text-5xl font-bold flex justify-center">
-                <span className="w-11/12 block text-center">
-                    {data.name}
-                </span>
+            <h1 className="text-5xl font-bold text-center">
+                {data.name}
             </h1>
             
             <div className="article-main flex p-6 gap-5">
                 <div className="article-content flex-1 bg-white p-6 rounded-3xl shadow-lg">
                     <div className="article-thumbnail flex justify-center px-6 pt-6">
-                        <img src={`https://theworldtimes.in${data.image}`} alt={data.name} className="rounded-lg" />
+                        <img src={data.image} alt={data.name} className="rounded-lg" />
                     </div>
 
                     <hr className="mt-12 mx-6 border-t-4" />
 
-                    <div className="article-text mt-10 text-2xl px-6 pb-6">
-                        {parse(data.content)}
+                    <div className="article-text mt-10 text-xl px-6 pb-6">
+                        {data.content}
                     </div>
                 </div>
 
@@ -138,7 +171,7 @@ export function Article() {
                             Published
                         </h2>
 
-                        <span>{data.publishedDate}</span>
+                        <span>{data.published}</span>
                     </div>
                     
                     <div className="article-tags">
@@ -146,7 +179,7 @@ export function Article() {
                             Tags
                         </h2>
 
-                        <ul className="flex gap-2 py-2 flex-wrap">
+                        <ul className="flex gap-2 py-2">
                             {
                                 data.tags.map((tag, index) => (
                                     <li key={index}>

@@ -29,11 +29,11 @@ export function Articles({ sectionId }) {
                         <ArticleListCard
                             key={news.id}
                             id={news.id}
-                            title={news.title}
-                            image={news.image}
+                            title={news.name}
+                            image={`https://theworldtimes.in${news.image}`}
                             author={news.author}
-                            publishDate={news.publishDate}
-                           tags={news.tags}
+                            publishDate={news.publishedDate}
+                            tags={news.tags}
                         />
                     ))
                 }

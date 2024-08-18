@@ -8,7 +8,7 @@ export function TaggedArticles({ sectionId }) {
 
     useEffect(() => {
         let fetchSectionNews = async () => {
-            let news = await api.articles.taggedArticles(sectionId, null);
+            let news = await api.articles.taggedArticles(sectionId, "all");
             setSectionNews(news);
         }
 
@@ -22,10 +22,10 @@ export function TaggedArticles({ sectionId }) {
                     <ArticleListCard
                         key={news.id}
                         id={news.id}
-                        title={news.title}
-                        image={news.image}
+                        title={news.name}
+                        image={`https://theworldtimes.in${news.image}`}
                         author={news.author}
-                        publishDate={news.publishDate}
+                        publishDate={news.publishedDate}
                         tags={news.tags}
                     />
                 ))

@@ -4,34 +4,34 @@ import { useEffect, useState } from "react";
 import api from "../../api";
 
 export function Featured() {
-    let [featuredCards, setFeaturedCards] = useState([]);
+    let [featuredNews, setFeaturedNews] = useState([]);
 
     useEffect(() => {
-        let fetchFeaturedCards = async () => {
-            let cards = await api.articles.topArticles();
-            setFeaturedCards(cards);
+        let fetchFeaturedNews = async () => {
+            let news = await api.articles.topArticles();
+            setFeaturedNews(news);
         }
         
-        fetchFeaturedCards();
+        fetchFeaturedNews();
     }, []);
 
     return (
         <section className="featured-section px-20">
             <h1 className="text-5xl font-bold py-3 p-4">
-                Recommended Articles
+                Recommended
             </h1>
 
             <div className="featured mt-2">
                 {
-                    featuredCards.map((cards) => (
+                    featuredNews.map((news) => (
                         <FeaturedCard
-                            key={cards.id}
-                            id={cards.id}
-                            title={cards.title}
-                            image={cards.image}
-                            author={cards.author}
-                            publishDate={cards.publishDate}
-                           tags={cards.tags}
+                            key={news.id}
+                            id={news.id}
+                            title={news.name}
+                            image={`https://theworldtimes.in${news.image}`}
+                            author={news.author}
+                            publishDate={news.publishedDate}
+                            tags={news.tags}
                         />
                     ))
                 }
