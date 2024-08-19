@@ -18,4 +18,22 @@ export class APICaller {
         });
         return response.json();
     }
+
+    async put(endpoint, data) {
+        const response = await fetch(`${this.baseURL}${endpoint}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        return response.json();
+    }
+
+    async delete(endpoint) {
+        const response = await fetch(`${this.baseURL}${endpoint}`, {
+            method: 'DELETE'
+        });
+        return response.json();
+    }
 }

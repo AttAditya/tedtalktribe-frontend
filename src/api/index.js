@@ -1,15 +1,16 @@
 import { APICaller } from "./caller";
-import { articleCalls, authCalls } from "./routing";
+import { articleCalls, authCalls, editorCalls } from "./routing";
 
-let caller = new APICaller("https://api.theworldtimes.in/api");
-// let caller = new APICaller("http://localhost:3000/api");
+let caller = new APICaller("https://tedtalktribe-backend.onrender.com/api");
 
 let articles = articleCalls(caller);
 let auth = authCalls(caller);
+let editor = editorCalls(caller);
 
 let api = {
     articles: articles,
-    auth: auth
+    auth: auth,
+    editor: editor
 }
 
 export default api;

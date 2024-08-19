@@ -16,18 +16,26 @@ import { useParams } from "react-router-dom";
 import api from "../api";
 import parse from "html-react-parser";
 
-export function Article() {
+export function Article({
+    overwrite=false,
+    articleName="Loading...",
+    articleContent="Loading...",
+    articleImage="",
+    articleAuthor="Loading...",
+    articlePublished="Loading...",
+    articleTags=[]
+}) {
     let params = useParams();
     let id = params.id;
 
     let [data, setData] = useState({
         id: id,
-        name: "Loading...",
-        content: "Loading...",
-        image: "",
-        author: "Loading...",
-        publishedDate: "Loading...",
-        tags: []
+        name: articleName,
+        content: articleContent,
+        image: articleImage,
+        author: articleAuthor,
+        publishedDate: articlePublished,
+        tags: articleTags
     })
 
     useEffect(() => {
@@ -36,8 +44,22 @@ export function Article() {
             setData(article);
         }
 
-        fetchArticle();
-    }, [id]);
+        if (!overwrite) {
+            fetchArticle();
+        }
+    }, [id, overwrite]);
+
+    useEffect(() => {
+        setData({
+            id: id,
+            name: articleName,
+            content: articleContent,
+            image: articleImage,
+            author: articleAuthor,
+            publishedDate: articlePublished,
+            tags: articleTags
+        });
+    }, [id, articleName, articleContent, articleImage, articleAuthor, articlePublished, articleTags]);
 
     return (
         <div className="article p-6 w-full">
@@ -50,7 +72,7 @@ export function Article() {
             <div className="article-main flex p-6 gap-5">
                 <div className="article-content flex-1 bg-white p-6 rounded-3xl shadow-lg">
                     <div className="article-thumbnail flex justify-center px-6 pt-6">
-                        <img src={`https://theworldtimes.in${data.image}`} alt={data.name} className="rounded-lg" />
+                        <img src={data.image} alt={data.name} className="rounded-lg" />
                     </div>
 
                     <hr className="mt-12 mx-6 border-t-4" />

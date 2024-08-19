@@ -28,7 +28,7 @@ export function Featured() {
                             key={news.id}
                             id={news.id}
                             title={news.name}
-                            image={`https://theworldtimes.in${news.image}`}
+                            image={news.image}
                             author={news.author}
                             publishDate={news.publishedDate}
                             tags={news.tags}

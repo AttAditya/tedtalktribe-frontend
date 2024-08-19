@@ -35,6 +35,7 @@ function App() {
                     <Route path="/article/:id" element={<ArticlePage />} />
 
                     <Route path="/editor/article" element={<ArticleEditorPage />} />
+                    <Route path="/editor/article/:id" element={<ArticleEditorPage />} />
 
                     <Route path="/404" element={<NotFoundPage />} />
                     <Route path="*" element={<NotFoundPage />} />

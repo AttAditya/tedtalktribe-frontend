@@ -1,8 +1,20 @@
-import { BiBold, BiHeading, BiItalic, BiSave, BiUnderline, BiWorld } from "react-icons/bi";
 import "./EditorWindow.css";
+import {
+    BiBold,
+    BiHeading,
+    BiItalic,
+    BiSave,
+    BiUnderline,
+    BiWorld
+} from "react-icons/bi";
 import { useRef } from "react";
 
-function EditorWindow({ title, setTitle, content, setContent }) {
+function EditorWindow({
+    title, setTitle,
+    content, setContent,
+    updateDraft,
+    publishDraft
+}) {
     let titleRef = useRef(null);
     let contentRef = useRef(null);
 
@@ -25,10 +37,10 @@ function EditorWindow({ title, setTitle, content, setContent }) {
                 </div>
 
                 <div className="toolbar-section">
-                    <button className="toolbar-button">
+                    <button className="toolbar-button" onClick={updateDraft}>
                         <BiSave />
                     </button>
-                    <button className="toolbar-button">
+                    <button className="toolbar-button" onClick={publishDraft}>
                         <BiWorld />
                     </button>
                 </div>

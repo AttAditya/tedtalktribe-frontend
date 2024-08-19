@@ -6,5 +6,14 @@ export let endpoints = {
     lists: {
         latest: (limit=9) => `/lists?limit=${limit}`,
         tagged: (tag, limit=6) => `/lists/${tag}?limit=${limit}`
+    },
+    user: {
+        login: () => "/user/login",
+        register: () => "/user/register"
+    },
+    editor: {
+        createDraft: () => "/articles",
+        updateDraft: (id) => `/articles/${id}`,
+        publishDraft: (id) => `/articles/${id}`
     }
 };
