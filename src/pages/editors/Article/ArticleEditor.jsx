@@ -48,7 +48,7 @@ function ArticleEditor() {
             setArticleContent(article.content);
             setArticleImage(article.image);
             setArticleAuthor(article.author);
-            setArticlePublished(article.published);
+            setArticlePublished(article.publishedDate);
             setArticleTags(article.tags);
         }
 
@@ -65,7 +65,7 @@ function ArticleEditor() {
             content: articleContent,
             image: articleImage,
             author: articleAuthor,
-            published: articlePublished,
+            publishedDate: articlePublished,
             tags: articleTags
         };
 
@@ -87,6 +87,7 @@ function ArticleEditor() {
                 setTitle={setArticleName}
                 content={articleContent}
                 setContent={setArticleContent}
+                setImage={setArticleImage}
                 updateDraft={updateDraft}
                 publishDraft={publishDraft}
             />
