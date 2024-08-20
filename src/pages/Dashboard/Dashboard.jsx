@@ -1,13 +1,17 @@
 import "./Dashboard.css";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useStorage } from '../../hooks';
-import { ProfileCard } from "../../components";
+import { ArticleListCard, ProfileCard } from "../../components";
 import { TbDoorExit, TbFilePencil } from "react-icons/tb";
-import { GrUserSettings } from "react-icons/gr";
+// import { GrUserSettings } from "react-icons/gr";
+import api from "../../api";
 
 function UserDashboard() {
+    let [userPosts, setUserPosts] = useState([]);
+    let [userDrafts, setUserDrafts] = useState([]);
+
     let navigate = useNavigate();
     let storage = useStorage();
 
@@ -46,6 +50,22 @@ function UserDashboard() {
             navigate("/login");
         }
     }, [user, navigate]);
+
+    useEffect(() => {
+        if (!user) {
+            return;
+        }
+
+        async function fetchUserPosts() {
+            let published = await api.dashboard.getUserPublishedArticles(user.username);
+            let drafts = await api.dashboard.getUserDraftArticles(user.username);
+
+            setUserPosts(published);
+            setUserDrafts(drafts);
+        }
+
+        fetchUserPosts();
+    }, [user]);
 
     return !user ? "" : (
         <div className="user-dashboard">
@@ -89,12 +109,12 @@ function UserDashboard() {
                         )
                     }
 
-                    <li className="action-item">
+                    {/* <li className="action-item">
                         <button className="action-button">
                             <span className="icon"><GrUserSettings /></span>
                             <span className="text">Edit Profile</span>
                         </button>
-                    </li>
+                    </li> */}
 
                     <li className="action-item">
                         <button className="action-button" onClick={signOut}>
@@ -105,7 +125,57 @@ function UserDashboard() {
                 </ul>
             </div>
 
-            <div className="dash-communities">
+            <div className="user-posts">
+                <h2 className="posts-header text-3xl font-bold">
+                    Your Published Articles
+                </h2>
+
+                <ul className="posts-list flex justify-evenly flex-wrap gap-10 p-10">
+                    {
+                        userPosts.map(post => (
+                            <li className="post-item w-1/4" key={post.id}>
+                                <Link to={`/article/${post.id}`} key={post.id}>
+                                    <ArticleListCard
+                                        id={post.id}
+                                        image={post.image}
+                                        publishDate={post.publishedDate}
+                                        author={post.author}
+                                        tags={post.tags}
+                                        title={post.name}
+                                    />
+                                </Link>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+
+            <div className="user-drafts">
+                <h2 className="drafts-header text-3xl font-bold">
+                    Your Draft Articles
+                </h2>
+
+                <ul className="drafts-list flex justify-evenly flex-wrap gap-10 p-10">
+                {
+                        userDrafts.map(post => (
+                            <li className="post-item w-1/4" key={post.id}>
+                                <Link to={`/editor/article/${post.id}`} key={post.id}>
+                                    <ArticleListCard
+                                        id={post.id}
+                                        image={post.image}
+                                        publishDate={post.publishedDate}
+                                        author={post.author}
+                                        tags={post.tags}
+                                        title={post.name}
+                                    />
+                                </Link>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+
+            {/* <div className="dash-communities">
                 <h2>Your Communities</h2>
                 <ul className="communities-list">
                     {
@@ -130,7 +200,7 @@ function UserDashboard() {
                     <li>Activity 4</li>
                     <li>Activity 5</li>
                 </ul>
-            </div>
+            </div> */}
         </div>
     );
 }

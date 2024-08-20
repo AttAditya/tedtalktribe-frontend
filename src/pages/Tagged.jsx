@@ -11,7 +11,7 @@ export function Tagged() {
             </h1>
 
             <section className="articles-list-section w-full mt-4">
-                <TaggedSection sectionId="articles" />
+                <TaggedSection sectionId="article" />
             </section>
         </div>
     );

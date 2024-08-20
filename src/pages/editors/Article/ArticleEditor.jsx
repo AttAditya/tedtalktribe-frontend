@@ -6,11 +6,15 @@ import { EditorWindow } from "../../../components";
 import { Article } from "../../Article";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../../api";
+import { useStorage } from "../../../hooks";
 
 function ArticleEditor() {
     let params = useParams();
     let existingId = params.id;
     let navigate = useNavigate();
+    let storage = useStorage();
+
+    let user = storage.get("user");
 
     useEffect(() => {
         async function createNewDraftArticle() {
@@ -18,14 +22,17 @@ function ArticleEditor() {
                 return () => {};
             }
 
-            let newArticleData = await api.editor.createNewDraft();
+            let newArticleData = await api.editor.createNewDraft({
+                author: user.username,
+                tags: ["article"]
+            });
             let newArticleId = newArticleData.id;
 
             navigate(`/editor/article/${newArticleId}`);
         }
 
         createNewDraftArticle();
-    }, [existingId, navigate]);
+    }, [existingId, navigate, user]);
 
     let [articleId, setArticleId] = useState(0);
     let [articleName, setArticleName] = useState("");

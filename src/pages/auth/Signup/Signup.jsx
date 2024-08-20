@@ -1,7 +1,34 @@
 import { Link } from "react-router-dom";
 import "./Signup.css";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "../../../api";
+import { useStorage } from "../../../hooks";
 
 function Signup() {
+    let usernameRef = useRef();
+    let passwordRef = useRef();
+
+    let navigate = useNavigate();
+    let storage = useStorage();
+
+    async function signupAction(event) {
+        event.preventDefault();
+        
+        let username = usernameRef.current.value;
+        let password = passwordRef.current.value;
+
+        try {
+            let response = await api.auth.signup(username, password);
+            let user_data = response.user;
+
+            storage.set("user", user_data);
+            navigate("/dashboard");
+        } catch (error) {
+            alert("An error occurred while signing up. Please try again.");
+        }
+    }
+
     return (
         <div className="signup">
             <div className="auth-container">
@@ -13,16 +40,16 @@ function Signup() {
                     <form className="auth-form">
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Email" />
+                            <input type="email" id="email" name="email" placeholder="Email" ref={usernameRef} />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
-                            <input type="password" id="password" name="password" placeholder="Password" />
+                            <input type="password" id="password" name="password" placeholder="Password" ref={passwordRef} />
                         </div>
 
                         <div className="form-group">
-                            <button type="submit">Sign Up</button>
+                            <button type="submit" onClick={signupAction}>Sign Up</button>
                         </div>
                     </form>
 

@@ -5,7 +5,9 @@ export let endpoints = {
     },
     lists: {
         latest: (limit=9) => `/lists?limit=${limit}`,
-        tagged: (tag, limit=6) => `/lists/${tag}?limit=${limit}`
+        tagged: (tag, limit=6) => `/lists/${tag}?limit=${limit}`,
+        userPublished: (username) => `/lists/user/${username}`,
+        userDrafts: (username) => `/lists/user/${username}/drafts`
     },
     user: {
         login: () => "/user/login",

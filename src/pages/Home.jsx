@@ -4,7 +4,7 @@ export function Home() {
     return (
         <div className="flex flex-col gap-32 w-full pb-20">
             <FeaturedSection />
-            <ArticleSection sectionId="articles" />
+            <ArticleSection sectionId="article" />
         </div>
     );
 }

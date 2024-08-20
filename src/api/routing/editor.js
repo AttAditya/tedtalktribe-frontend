@@ -1,7 +1,7 @@
 import { endpoints } from "../endpoints";
 
-async function createNewDraft(caller) {
-    let data = await caller.post(endpoints.editor.createDraft(), {});
+async function createNewDraft(caller, basicDraftData) {
+    let data = await caller.post(endpoints.editor.createDraft(), basicDraftData);
     return data;
 }
 
@@ -17,7 +17,7 @@ async function publishDraftArticle(caller, id) {
 
 export function editorCalls(caller) {
     return {
-        createNewDraft: () => createNewDraft(caller),
+        createNewDraft: (basicDraftData) => createNewDraft(caller, basicDraftData),
         updateDraftArticle: (id, articleData) => updateDraftArticle(caller, id, articleData),
         publishDraftArticle: (id) => publishDraftArticle(caller, id)
     }

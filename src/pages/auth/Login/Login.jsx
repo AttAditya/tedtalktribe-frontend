@@ -18,12 +18,17 @@ function Login() {
         
         let username = usernameRef.current.value;
         let password = passwordRef.current.value;
-
-        let response = await api.auth.login(username, password);
-        let user_data = response.user;
-
-        storage.set("user", user_data);
-        navigate("/dashboard");
+        
+        try {
+            let response = await api.auth.login(username, password);
+            let user_data = response.user;
+            
+            storage.set("user", user_data);
+            navigate("/dashboard");
+        } catch {
+            alert("Invalid credentials");
+            return;
+        }
     }
 
     useEffect(() => {
